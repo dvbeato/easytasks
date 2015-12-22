@@ -27,6 +27,7 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
