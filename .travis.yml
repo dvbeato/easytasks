@@ -1,0 +1,14 @@
+rvm:
+  - 2.2.1
+
+before_install:
+  - "gem install bundler"
+
+before_script:
+ - "psql -c 'create role easytasks SUPERUSER LOGIN;' postgres"
+ - "psql -c 'create database easytasks_test;' -U easytasks postgres"
+ - "bundle exec rake db:migrate"
+
+branches:
+  only:
+    - master
