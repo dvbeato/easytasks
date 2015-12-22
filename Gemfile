@@ -31,6 +31,7 @@ gem 'sass-rails', '>= 3.2'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :test do
