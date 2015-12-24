@@ -30,23 +30,24 @@ RSpec.describe User, type: :model do
 
   end
   
-  describe "#publics_task_lists" do
+  describe "#public_task_lists" do
     
-    subject(:user_publics_task_lists) { @user.publics_task_lists }
-
     before do
-      @user = create(:user)
-      @another_user = create(:user)
+      @private_list    = create(:task_list, user: user)
+      @public_list_one = create(:public_task_list, user: user)
+      @public_list_two = create(:public_task_list, user: user)
       
-      @private_list = create(:task_list, user: @user)
-      
-      @public_list_one   = create(:public_task_list, user: @user)
-      @public_list_two   = create(:public_task_list, user: @user)
-      @public_list_three = create(:public_task_list, user: @another_user)
+      another_user = create(:user)
+      @public_list_three = create(:public_task_list, user: another_user)
     end
 
-    it { is_expected.to contain_exactly(@public_list_one, @public_list_two) }
-    it { is_expected.to_not include(@public_list_three) }
+    it "returns only public task lists from user" do 
+      expect(user.public_task_lists).to contain_exactly(@public_list_one, @public_list_two)
+    end  
+
+    it "not returns public task lists from another user" do  
+      expect(user.public_task_lists).to_not include(@public_list_three)
+    end
 
   end
 

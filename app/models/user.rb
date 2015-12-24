@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :user_favorite_task_lists
   has_many :favorite_task_lists, through: :user_favorite_task_lists, source: :task_list
 
-  def publics_task_lists
+  def public_task_lists
     task_lists.publics
   end
 
