@@ -3,6 +3,17 @@ require 'rails_helper'
 RSpec.describe TaskList, type: :model do
   it { is_expected.to belong_to(:user) }
   it { is_expected.to validate_presence_of(:user) }
+  it { is_expected.to have_many(:favorited_by) }
+  
+  describe "#favorited_by" do
+    it "contains user how favorite" do 
+      user = create(:user)
+      
+      task_list = create(:task_list_favorited_by, user: user)
+
+      expect(task_list.favorited_by).to include(user)
+    end
+  end
 
   describe ".publics" do
     
