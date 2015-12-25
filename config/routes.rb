@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       post 'favorite'
       delete 'unfavorite'
     end
+    resources :tasks
   end
 
   devise_for :users
