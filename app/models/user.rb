@@ -13,11 +13,11 @@ class User < ActiveRecord::Base
   end
 
   def favorites task_list
-    self.favorite_task_lists << task_list
+    self.user_favorite_task_lists.create(task_list_id: task_list.id)
   end
 
   def unfavorites task_list
-    self.favorite_task_lists.delete task_list
+    self.user_favorite_task_lists.find_by(task_list_id: task_list.id).destroy
   end
 
 end

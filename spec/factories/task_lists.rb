@@ -13,7 +13,7 @@ FactoryGirl.define do
 
     factory :task_list_favorited_by do
       after :create do |task_list, evaluator|
-        task_list.favorited_by << evaluator.user
+        task_list.user_favorite_task_lists.create(user_id: evaluator.user.id)
       end
     end
   end
