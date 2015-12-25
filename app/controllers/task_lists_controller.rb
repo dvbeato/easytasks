@@ -1,5 +1,5 @@
 class TaskListsController < ApplicationController
-  before_action :set_task_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_task_list, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
   before_action :authenticate_user!
   
   respond_to :html
@@ -29,6 +29,16 @@ class TaskListsController < ApplicationController
 
   def destroy
     @task_list.destroy
+    respond_with(@task_list)
+  end
+
+  def favorite
+    current_user.favorites @task_list
+    respond_with(@task_list)
+  end
+
+  def unfavorite
+    current_user.unfavorites @task_list
     respond_with(@task_list)
   end
 

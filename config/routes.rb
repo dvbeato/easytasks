@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   
-  resources :task_lists
+  resources :task_lists do
+    member do
+      post 'favorite'
+      delete 'unfavorite'
+    end
+  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
