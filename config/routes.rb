@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  root 'home#index'
+  get 'home/index'
+
   resources :task_lists do
     member do
       post 'favorite'
