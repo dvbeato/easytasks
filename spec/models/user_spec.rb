@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   it { is_expected.to have_many :task_lists }
   it { is_expected.to have_many :favorite_task_lists }
-
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:slug) }
+  
   let(:user) { create(:user) }
 
   describe "#favorite_task_lists" do

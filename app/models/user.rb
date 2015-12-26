@@ -1,12 +1,17 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  extend FriendlyId
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  
+  friendly_id :name, use: :slugged
 
   has_many :task_lists
   has_many :user_favorite_task_lists
   has_many :favorite_task_lists, through: :user_favorite_task_lists, source: :task_list
+
+  validates_presence_of :name, :slug
+  validates_uniqueness_of :slug
 
   def public_task_lists
     task_lists.publics
