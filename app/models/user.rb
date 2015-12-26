@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
     self.user_favorite_task_lists.find_by(task_list_id: task_list.id).destroy
   end
 
+  def avatar_url
+    gravatar_id = Digest::MD5.hexdigest(email.downcase)
+    "http://gravatar.com/avatar/#{gravatar_id}.png"
+  end
 end

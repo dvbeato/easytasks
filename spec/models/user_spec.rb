@@ -51,4 +51,10 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe "#avatar_url" do
+    it "returns gravatar url" do 
+      expect(user.avatar_url).to match(/http:\/\/gravatar.com\/avatar\/[\w]*?.png/)
+    end
+  end
+
 end
