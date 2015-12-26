@@ -5,7 +5,8 @@ RSpec.describe TaskList, type: :model do
   it { is_expected.to validate_presence_of(:user) }
   it { is_expected.to have_many(:favorited_by) }
   it { is_expected.to have_many(:tasks) }
-
+  it { is_expected.to_not be_public }
+  
   describe "#favorited_by" do
     it "contains user how favorite" do 
       user = create(:user)
