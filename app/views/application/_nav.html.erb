@@ -16,11 +16,11 @@
     <div class="collapse navbar-collapse" id="navbar">
     
       <% if user_signed_in? %>
-        <form class="navbar-form navbar-left" role="search">
+       <!--  <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
           </div>
-        </form>
+        </form> -->
         
         <ul class="nav navbar-nav navbar-right">
           
@@ -30,9 +30,12 @@
             <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Profile</a></li>
+              <li><a href="#"><%= fa_icon "user" %> Profile</a></li>
               <li role="separator" class="divider"></li>
-              <li><%= link_to 'logout', destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to destroy_user_session_path, method: :delete do %>
+                  <%= fa_icon "sign-out" %> Logout
+              <% end %>
+              </li>
             </ul>
           </li>
         </ul>
