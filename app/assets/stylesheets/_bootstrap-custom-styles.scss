@@ -1,0 +1,66 @@
+
+// Panels
+.panel {
+  color: $gray-dark;
+}
+
+.panel-group .panel-heading + .panel-collapse > .panel-body, 
+.panel-group .panel-heading + .panel-collapse > .list-group {
+  border-top:0;
+  border-bottom: 1px solid $panel-default-border;
+ }
+
+
+// Forms
+.form-control {
+  border: 0;
+  border-bottom: 1px solid $border-color;
+  
+  @extend .no-box-shadow;
+
+  &:focus {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 0px 2px 1px rgba(0, 167, 255, 0.17);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 0px 2px 1px rgba(0, 167, 255, 0.17);  
+  }
+}
+
+.help-block {
+  z-index: 10;
+  position: absolute;
+  right: 5px;
+  top: 6px;
+}
+
+.has-error .form-control {
+  @extend .no-box-shadow;
+  &:focus {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 1px 2px 1px rgba(255, 0, 97, 0.17);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 1px 2px 1px rgba(255, 0, 97, 0.17);
+  }
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group-addon {
+  position: relative;
+  background: none;
+  border: 1 solid $border-color;
+  border-top:0;
+  border-right:0;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 30px;
+    right: 0;
+    z-index: 10;
+    bottom: -10px;
+    width: 1px;
+    opacity: .5;
+    background-color: rgba(212,212,212,0);
+    background-image: -webkit-linear-gradient(bottom,rgba(212,212,212,0) 0,#d4d4d4 30%,#d4d4d4 70%,rgba(212,212,212,0) 100%);
+    background-image: linear-gradient(to top,rgba(212,212,212,0) 0,#d4d4d4 30%,#d4d4d4 70%,rgba(212,212,212,0) 100%);
+  }
+}
