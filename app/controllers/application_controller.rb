@@ -5,9 +5,23 @@ class ApplicationController < ActionController::Base
   respond_to :html, :js
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  
+  layout :layout_by_resource   
+
+  private
+
+  def layout_by_resource
+    if devise_controller?
+      "authentication"
+    else
+      "application"
+    end
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up).push  :name, :slug
     devise_parameter_sanitizer.for(:account_update).push  :name, :slug
   end
+
+
 end
