@@ -1,22 +1,18 @@
 class TaskListsController < ApplicationController
   before_action :set_task_list, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
   before_action :authenticate_user!
-  
-  respond_to :html
 
   def create
     @task_list = task_list_scope.build(task_list_params)
     @task_list.save
-    respond_with(@task_list)  
+    redirect_to profile_path current_user
   end
 
   def show
-    respond_with(@task_list)
   end
 
   def new 
     @task_list = TaskList.new
-    respond_with(@task_list)
   end
 
   def edit
@@ -24,22 +20,21 @@ class TaskListsController < ApplicationController
 
   def update
     @task_list.update(task_list_params)
-    respond_with(@task_list)
   end
 
   def destroy
     @task_list.destroy
-    respond_with(@task_list)
+    redirect_to profile_path current_user
   end
 
   def favorite
     current_user.favorites @task_list
-    respond_with(@task_list)
+    redirect_to profile_path @task_list.user
   end
 
   def unfavorite
     current_user.unfavorites @task_list
-    respond_with(@task_list)
+    redirect_to profile_path @task_list.user
   end
 
   private

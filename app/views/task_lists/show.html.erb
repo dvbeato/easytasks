@@ -7,3 +7,31 @@
   <strong>Public:</strong> <%= @task_list.public %>  
 </p>
 
+<ul id="tasks">
+  <% @task_list.tasks.each do |task| %>
+  <li>
+    <%= task.name %>
+  </li>
+  <% end %> 
+</ul>
+
+<% if @task_list.user.id != current_user.id %>
+  
+  <p>
+    <%= image_tag avatar(@task_list.user, 28), class: "img-circle" %>
+    <%= @task_list.user.email %>
+  </p>
+  
+  <% unless @task_list.favorited_by.include?(current_user)  %>
+    <%= link_to 'favorite', favorite_task_list_path(@task_list), remote: true, method: :post, class: "btn btn-primary" %>
+  <% else %>
+    <%= link_to 'unfavorite', unfavorite_task_list_path(@task_list), remote: true, method: :delete, class: "btn btn-danger" %>
+  <% end %>  
+
+<% else %>
+  
+  <%= render 'tasks/form', task_list: @task_list, task: Task.new %> 
+  
+<% end %>
+
+

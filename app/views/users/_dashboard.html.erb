@@ -1,0 +1,19 @@
+<section id="user-dashboard" class="header gradient text-center">
+
+  <%= render '/users/avatar', user: @user, size: 100 %>
+
+  <h3> <%= @user.name %> </h3> 
+  <p> <%= @user.email %> </p>
+  
+  <h4 class="info-badge"> 
+    <%= fa_icon "th-list" %> task lists: <%= @task_lists.size %> 
+  </h4>
+  
+  <% if current_user? @user %>
+    <h4 class="info-badge"> 
+      <%= fa_icon "heart" %> favorites: 
+      <%= @user.favorite_task_lists.size %> 
+    </h4>
+  <% end %>
+
+</section>

@@ -23,7 +23,7 @@ RSpec.describe TaskListsController, type: :controller do
 
         it "redirects to the new task list" do
           create_task_list
-          expect(response).to redirect_to TaskList.last
+          expect(response).to redirect_to profile_path(current_user)
         end
 
         it "associates new task list with current user" do
