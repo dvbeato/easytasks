@@ -1,5 +1,8 @@
-<h2>Change your password</h2>
+<div class="panel-heading">
+  <h2 class="text-primary">Change your password</h2>
+</div>
 
+<div class="panel-body">
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
@@ -7,13 +10,27 @@
   <%= f.full_error :reset_password_token %>
 
   <div class="form-inputs">
-    <%= f.input :password, label: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, label: "Confirm your new password", required: true %>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <%= fa_icon "lock" %>
+      </span>
+      <%= f.input :password, label: false, placeholder: "New password", required: true, autofocus: true %>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-addon">
+        <%= fa_icon "lock" %>
+      </span>
+      <%= f.input :password_confirmation, label: false, placeholder: "Confirm your new password", required: true %>
+    </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
+    <%= f.button :submit, "Change my password", class: "btn-lg btn-block btn-primary" %>
   </div>
 <% end %>
+</div>
 
+<div class="panel-footer">
 <%= render "devise/shared/links" %>
+</div>
