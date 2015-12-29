@@ -1,0 +1,10 @@
+<% if tasks.empty? %>
+  <div class="alert alert-warning">
+    <%= fa_icon "exclamation-circle" %> No Tasks found
+  </div>
+<% end %>
+<ul>
+<% tasks.each do |task| %>
+  <li> <%= task.name %> </li>
+<% end %>
+</ul> 
