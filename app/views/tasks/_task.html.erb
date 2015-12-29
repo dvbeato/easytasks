@@ -1,0 +1,3 @@
+<li data-task="<%= task.id %>" class="item"><%= task.name %>
+<%= link_to '', task_list_task_path(task.task_list, task), remote: true, method: :delete, class: "delete" if current_user? task.task_list.user %>      
+</li>

@@ -1,0 +1,3 @@
+$('#tasks<%= @task.task_list.id %>')
+  .find(".item[data-task=<%= @task.id %>]")
+  .remove();

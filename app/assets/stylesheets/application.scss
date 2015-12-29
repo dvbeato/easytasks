@@ -34,12 +34,6 @@ a:focus {
   box-shadow: none;
 }
 
-ul.collection {
-  list-style: none;
-  padding-left:0;
-  margin-left: 0;
-}
-
 .favorite {
   color: $favorite-color;
   
@@ -83,12 +77,30 @@ ul.collection {
 .public:hover .fa-private { @extend .fa-unlock-alt; }
 
 
+// Collection
+.task-lists.collection { 
+  font-size: 1.45em; 
+  & > .item {
+    line-height: 2.2;
+
+    .delete {
+      line-height: 1.4;
+    }  
+  }
+}
+
+ul.collection {
+  padding-left:0;
+  margin-left: 0;
+  list-style-position: inside;
+}
+
 .collection {
-  font-size: 1.45em;
+
   .item {
     position: relative;
     padding: $item-padding;
-    line-height: 2.2;
+    line-height: 1.2;
     border-bottom: 1px solid $border-color;
   }
   
@@ -100,7 +112,7 @@ ul.collection {
     position: absolute;
     top: 0px;
     right: $item-padding;
-    line-height: 1.4;
+    line-height: 1;
     font-size: 2em;
     color: #D02C5E;
     &:hover, &:focus {

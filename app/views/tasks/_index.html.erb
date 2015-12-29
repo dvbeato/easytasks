@@ -3,8 +3,8 @@
     <%= fa_icon "exclamation-circle" %> No Tasks found
   </div>
 <% end %>
-<ul>
+
 <% tasks.each do |task| %>
-  <li> <%= task.name %> </li>
+  <%= render "/tasks/task", task: task %>
 <% end %>
-</ul> 
+

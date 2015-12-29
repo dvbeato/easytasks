@@ -1,0 +1,14 @@
+<%= simple_form_for [task_list, task], remote: true do |f| %>
+<div class="input-group">
+  <div class="input-group-addon">
+    <%= fa_icon "chevron-down" %>
+  </div>
+  <%= f.input :name, label: false, placeholder: "New Task" %>
+
+  <div class="input-group-btn">
+    <%= f.button :button, class: "btn-primary " do %>
+      <%= fa_icon "check" %>
+    <% end %>
+  </div>
+</div>
+<% end %> 
