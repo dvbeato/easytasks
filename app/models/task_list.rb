@@ -5,6 +5,7 @@ class TaskList < ActiveRecord::Base
   has_many :tasks
   
   validates :user, presence: true
-
+  validates :name, presence: true
+  
   scope :publics, -> { where(public: true) }
 end
