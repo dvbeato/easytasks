@@ -17,12 +17,18 @@
       <div class="action-status inline">
         <% if current_user? user %>
           
-          <%= link_to task_list_path(task_list), method: :put, class: "public" do %>
-            <% if task_list.public %>
-              <%= fa_icon "public" %>
+          <% if task_list.public %>
+              
+              <%= link_to task_list_path(task_list, task_list: {public: false}), method: :put, class: "public" do %>
+                <%= fa_icon "public" %>
+              <% end %>
+              
             <% else %>
-              <%= fa_icon "private" %>
-            <% end %>
+              
+              <%= link_to task_list_path(task_list, task_list: {public: true}), method: :put, class: "public" do %>
+                <%= fa_icon "private" %>
+              <% end %>
+
           <% end %>
 
         <% else %>

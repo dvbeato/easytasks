@@ -20,6 +20,7 @@ class TaskListsController < ApplicationController
 
   def update
     @task_list.update(task_list_params)
+    redirect_to profile_path current_user
   end
 
   def destroy
