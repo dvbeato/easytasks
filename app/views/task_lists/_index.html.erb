@@ -17,35 +17,11 @@
       <div class="action-status inline">
         <% if current_user? user %>
           
-          <% if task_list.public %>
-              
-              <%= link_to task_list_path(task_list, task_list: {public: false}), method: :put, class: "public" do %>
-                <%= fa_icon "public" %>
-              <% end %>
-              
-            <% else %>
-              
-              <%= link_to task_list_path(task_list, task_list: {public: true}), method: :put, class: "public" do %>
-                <%= fa_icon "private" %>
-              <% end %>
-
-          <% end %>
+          <%= render "/task_lists/public_link", task_list: task_list %>
 
         <% else %>
           
-          <% if task_list.favorited_by.include?(current_user) %>
-            
-            <%= link_to unfavorite_task_list_path(task_list), class: "favorite", method: :delete do %>
-              <%= fa_icon "favorite" %>
-            <% end %>
-
-          <% else %>
-            
-            <%= link_to favorite_task_list_path(task_list), class: "favorite", method: :post do %>
-              <%= fa_icon "unfavorite" %>
-            <% end %>
-              
-          <% end %>
+          <%= render "/task_lists/favorite_link", task_list: task_list %>
 
         <% end %>
       </div>
@@ -56,6 +32,7 @@
       
       <%= link_to '', task_list_path(task_list), method: :delete, class: "delete" if current_user? user %>      
     </div>
+    
     <div id="tasks<%= task_list.id %>" class="panel-collapse collapse">
       <div class="panel-body">
         <% if task_list.tasks.empty? %>

@@ -1,0 +1,13 @@
+<% if task_list.favorited_by.include?(current_user) %>
+            
+  <%= link_to unfavorite_task_list_path(task_list), class: "favorite", method: :delete do %>
+    <%= fa_icon "favorite" %>
+  <% end %>
+
+<% else %>
+  
+  <%= link_to favorite_task_list_path(task_list), class: "favorite", method: :post do %>
+    <%= fa_icon "unfavorite" %>
+  <% end %>
+    
+<% end %>
