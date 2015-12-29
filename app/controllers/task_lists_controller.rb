@@ -1,5 +1,5 @@
 class TaskListsController < ApplicationController
-  before_action :set_task_list, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
+  before_action :set_task_list, only: [:show, :update, :destroy, :favorite, :unfavorite]
   before_action :authenticate_user!
 
   def create
@@ -9,13 +9,6 @@ class TaskListsController < ApplicationController
   end
 
   def show
-  end
-
-  def new 
-    @task_list = TaskList.new
-  end
-
-  def edit
   end
 
   def update

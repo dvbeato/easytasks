@@ -6,13 +6,17 @@
   <p> <%= @user.email %> </p>
   
   <h4 class="info-badge"> 
+    <a href="#taskListsTab" data-toggle="tab">
     <%= fa_icon "th-list" %> task lists: <%= @task_lists.size %> 
+    </a>
   </h4>
   
   <% if current_user? @user %>
     <h4 class="info-badge"> 
+      <a href="#favoritesTab" data-toggle="tab">
       <%= fa_icon "heart" %> favorites: 
       <%= @user.favorite_task_lists.size %> 
+      </a>
     </h4>
   <% end %>
 

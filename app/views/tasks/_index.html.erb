@@ -1,10 +1,16 @@
-<% if tasks.empty? %>
-  <div class="alert alert-warning alert-empty-list">
-    <%= fa_icon "exclamation-circle" %> No Tasks found
-  </div>
-<% end %>
+<section id="task-list-<%= task_list.id %>-tasks">
+  <%= render "/tasks/form", task_list: task_list, task: Task.new if current_user? task_list.user %>
 
-<% tasks.each do |task| %>
-  <%= render "/tasks/task", task: task %>
-<% end %>
+  <% if task_list.tasks.empty? %>
+    <div class="alert alert-warning alert-empty-list">
+      <%= fa_icon "exclamation-circle" %> No Tasks found
+    </div>
+  <% end %>
+
+  <ul class="tasks collection">        
+    <% task_list.tasks.each do |task| %>
+      <%= render "/tasks/task", task: task %>
+    <% end %>
+  </ul>
+</section>
 

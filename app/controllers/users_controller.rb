@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @task_lists = is_profile_of_current_user? ? @user.task_lists : @user.public_task_lists
-    @favorite_task_lists = @user.favorite_task_lists
+    @favorite_task_lists = @user.favorite_task_lists if is_profile_of_current_user?
     respond_with @user
   end
 

@@ -1,4 +1,6 @@
-$('#tasks<%= @task_list.id %>').find('.alert-empty-list').hide();
-$('#tasks<%= @task_list.id %>').prepend('<%=j render partial: 'task', locals: {task: @task} %>');
-$('#tasks<%= @task_list.id %>-panel').find('#task_name').val('');
+var $scope = $('#task-list-<%= @task_list.id %>-tasks');
+
+$scope.find('.alert-empty-list').hide();
+$scope.find('.tasks').prepend('<%=j render partial: 'task', locals: {task: @task} %>');
+$scope.find('#task_name').val('');
 

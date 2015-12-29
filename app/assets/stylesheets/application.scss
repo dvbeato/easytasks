@@ -176,6 +176,8 @@ ul.collection {
   }
 }
 
+.gradient a { color: #fff; }
+
 .info-badge {
   @extend .inline;
   $info-badge-padding: 8px;

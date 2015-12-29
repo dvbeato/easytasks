@@ -1,3 +1,4 @@
-$('#tasks<%= @task.task_list.id %>')
+var $scope = $('#task-list-<%= @task.task_list.id %>-tasks');
+$scope
   .find(".item[data-task=<%= @task.id %>]")
   .remove();

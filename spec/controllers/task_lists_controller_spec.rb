@@ -33,19 +33,6 @@ RSpec.describe TaskListsController, type: :controller do
       end 
     end
 
-    describe "when GET #show/:id" do
-      
-      it "assigns the requested task list to @task_list" do
-        get :show, id: task_list
-        expect(assigns(:task_list)).to eq(task_list)
-      end
-
-      it "renders the #show template" do
-        get :show, id: task_list
-        expect(response).to render_template :show
-      end
-    end
-
     describe "when DELETE #destroy" do
       before { @task_list = task_list }
       

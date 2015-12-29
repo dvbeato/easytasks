@@ -1,48 +1,29 @@
 
 <section id="task-lists-header">
-  <h1 class="inline">Task Lists </h1>   
+  <h1 class="inline"><%= title %></h1>   
 
-  <% if current_user? user %>
-    <a href="#" data-target="#new-task-modal" data-toggle="modal" class="action-link"><%= fa_icon "plus-circle" %> New Task List</a>
+  <% if current_user? @user %>
+    <%= render "/task_lists/form", task_list: TaskList.new %>
   <% end %>
 </section>
 
-<%= render "/task_lists/form", task_list: TaskList.new %>
-
-<div id="task-lists" class="panel-group">
+<section id="task-lists" class="panel-group">
   <div class="panel panel-default collection task-lists">
+  
   <% task_lists.each do |task_list| %>
-    <div class="panel-heading item">
-      
-      <div class="action-status inline">
-        <% if current_user? user %>
-          
-          <%= render "/task_lists/public_link", task_list: task_list %>
-
-        <% else %>
-          
-          <%= render "/task_lists/favorite_link", task_list: task_list %>
-
-        <% end %>
-      </div>
     
-      <a class="collapsed action-link" data-toggle="collapse" data-parent="#task-lists" href="#tasks<%= task_list.id %>-panel">
-        <%= task_list.name %>
-      </a>
-      
-      <%= link_to '', task_list_path(task_list), method: :delete, class: "delete" if current_user? user %>      
+    <div class="panel-heading item">
+      <%= render "/task_lists/task_list", task_list: task_list %>
     </div>
 
-    <div id="tasks<%= task_list.id %>-panel" class="panel-collapse collapse">
+    <div id="task-list-<%= task_list.id %>-content" class="panel-collapse collapse">
       <div class="panel-body">
-        <%= render "/tasks/form", task_list: task_list, task: Task.new if current_user? user %>
-        <ul id="tasks<%= task_list.id %>" class="tasks collection">
-          <%= render "/tasks/index", tasks: task_list.tasks %>
-        </ul>
+        <%= render "/tasks/index", task_list: task_list %>
       </div>
     </div>
+
   <% end %>
   </div>
-</div>
+</section>
 
-  
+
