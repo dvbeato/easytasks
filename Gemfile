@@ -18,6 +18,7 @@ gem 'devise'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'rails_12factor', group: :production
 gem 'spring', group: :development
+gem 'coveralls', require: false
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
