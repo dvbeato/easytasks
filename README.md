@@ -1,1 +1,1 @@
-## EASY TASKS [![Build Status](https://travis-ci.org/dvbeato/easytasks.svg)](https://travis-ci.org/dvbeato/easytasks)
+## EASY TASKS [![Build Status](https://travis-ci.org/dvbeato/easytasks.svg)](https://travis-ci.org/dvbeato/easytasks) [![Coverage Status](https://coveralls.io/repos/dvbeato/easytasks/badge.svg?branch=master&service=github)](https://coveralls.io/github/dvbeato/easytasks?branch=master)
