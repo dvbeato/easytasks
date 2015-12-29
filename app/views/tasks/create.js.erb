@@ -1,2 +1,4 @@
 $('#tasks<%= @task_list.id %>').find('.alert-empty-list').hide();
-$('#tasks<%= @task_list.id %>').append('<%=j render partial: 'task', locals: {task: @task} %>');
+$('#tasks<%= @task_list.id %>').prepend('<%=j render partial: 'task', locals: {task: @task} %>');
+$('#tasks<%= @task_list.id %>-panel').find('#task_name').val('');
+
