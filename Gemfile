@@ -20,6 +20,7 @@ gem 'spring', group: :development
 gem 'coveralls', require: false
 gem "foreman"
 gem 'puma'
+
 group :production, :staging do
   gem "rails_12factor"
   gem "rails_stdout_logging"
@@ -34,4 +35,6 @@ end
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0'
+  gem 'capybara'
+  gem 'poltergeist', '1.5.1'
 end
