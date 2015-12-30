@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task_list, only: [:create]
-  before_action :set_task, only: [:update, :destroy]
+  before_action :set_task, only: [:update, :destroy, :done, :undone]
 
   before_action :authenticate_user!
 
@@ -17,6 +17,16 @@ class TasksController < ApplicationController
     @task.destroy
   end
 
+  def done
+    current_user.completes @task
+    render :update
+  end
+
+  def undone
+    current_user.uncompletes @task
+    render :update
+  end
+
   private
 
   def set_task
@@ -28,6 +38,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :done)
+    params.require(:task).permit(:name)
   end
 end

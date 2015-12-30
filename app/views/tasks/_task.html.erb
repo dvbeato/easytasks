@@ -1,3 +1,13 @@
-<li data-task="<%= task.id %>" class="item"><%= task.name %>
+<li data-task="<%= task.id %>" class="item <%= 'done' if task.done_by? current_user %>">
+<% if task.done_by? current_user %>
+  <%= link_to undone_task_list_task_path(task.task_list, task), remote: true, method: :delete do %>
+    <%= task.name %>
+  <% end %>
+<% else %>
+  <%= link_to done_task_list_task_path(task.task_list, task), remote: true, method: :post do %>
+    <%= task.name %>
+  <% end %>
+<% end %>
 <%= link_to '', task_list_task_path(task.task_list, task), remote: true, method: :delete, class: "delete" if current_user?(task.user) %>      
 </li>
+  

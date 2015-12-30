@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   it { is_expected.to have_many :task_lists }
   it { is_expected.to have_many :favorite_task_lists }
+  it { is_expected.to have_many :done_tasks }
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:slug) }
-  
+
   let(:user) { create(:user) }
 
   describe "#favorite_task_lists" do
@@ -56,6 +57,33 @@ RSpec.describe User, type: :model do
   describe "#avatar_url" do
     it "returns gravatar url" do 
       expect(user.avatar_url).to match(/http:\/\/gravatar.com\/avatar\/[\w]*?.png/)
+    end
+  end
+
+  describe "#done_tasks" do
+    let(:task) { create(:task_done_by, user: user) } 
+    
+    it "returns taks done by user" do
+      expect(user.done_tasks).to contain_exactly(task)
+    end
+
+  end
+
+  describe "#completes" do 
+
+    it "completes a task" do
+      task = create(:task) 
+      user.completes task
+      expect(user.done_tasks).to include(task)
+    end
+  end
+
+  describe "#uncompletes" do 
+
+    it "uncompletes a task" do
+      task = create(:task_done_by, user: user) 
+      user.uncompletes task
+      expect(user.done_tasks).to_not include(task)
     end
   end
 

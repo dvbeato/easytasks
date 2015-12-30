@@ -9,7 +9,12 @@ Rails.application.routes.draw do
       post 'favorite'
       delete 'unfavorite'
     end
-    resources :tasks
+    resources :tasks do 
+      member do
+        post 'done'
+        delete 'undone'
+      end
+    end
   end
 
   devise_for :users

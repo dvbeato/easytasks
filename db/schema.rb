@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151226122556) do
+ActiveRecord::Schema.define(version: 20151230155220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,13 +41,22 @@ ActiveRecord::Schema.define(version: 20151226122556) do
 
   create_table "tasks", force: true do |t|
     t.string   "name"
-    t.boolean  "done"
     t.integer  "task_list_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "tasks", ["task_list_id"], name: "index_tasks_on_task_list_id", using: :btree
+
+  create_table "user_done_tasks", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_done_tasks", ["task_id"], name: "index_user_done_tasks_on_task_id", using: :btree
+  add_index "user_done_tasks", ["user_id"], name: "index_user_done_tasks_on_user_id", using: :btree
 
   create_table "user_favorite_task_lists", force: true do |t|
     t.integer  "task_list_id"
