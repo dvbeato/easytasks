@@ -8,17 +8,19 @@
     <% end %>
   </div>
   
-  <div class="edit-form inline hidden">
-    <%= render "/task_lists/form_inline", task_list: task_list %>
-  </div>
-  
   <a class=" collapsed action-link" data-toggle="collapse" data-parent="#task-lists" href="#task-list-<%= task_list.id %>-content">
     <%= task_list.name %>
   </a>
-
-  <a href="#" class="edit-btn" onclick="taskLists.edit(<%= task_list.id %>)">
-    <%= fa_icon 'edit' %>
-  </a>
-
+  
+  <% if current_user? task_list.user %>
+    <div class="edit-form inline hidden">
+      <%= render "/task_lists/form_inline", task_list: task_list %>
+    </div>
+    
+    <a href="#" class="edit-btn" onclick="taskLists.edit(<%= task_list.id %>)">
+      <%= fa_icon 'edit' %>
+    </a>
+  <% end %>
+  
 <%= link_to '', task_list_path(task_list), method: :delete, class: "delete" if current_user? task_list.user %>
 </div>
