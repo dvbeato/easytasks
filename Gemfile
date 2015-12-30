@@ -37,4 +37,5 @@ group :test do
   gem 'shoulda-matchers', '~> 3.0'
   gem 'capybara'
   gem 'poltergeist', '1.5.1'
+  gem 'database_cleaner',     '1.4.0'
 end
