@@ -6,6 +6,7 @@
 @import "bootstrap-custom-styles";
 @import "font-awesome";
 @import "animations";
+@import "task-lists";
 
 a:focus {
   box-shadow: none;
@@ -36,65 +37,12 @@ a:focus {
   box-shadow: none;
 }
 
-.favorite {
-  color: $favorite-color;
-  
-  &:hover, &:focus  {
-    color: $favorite-color;
-    text-decoration: none;
-   
-    .fa-favorite, .fa-unfavorite {
-      @extend .faa-pulse;
-      @extend .animated;
-    }
-  }
-}
-
-.fa-favorite { @extend .fa-heart; }
-.fa-unfavorite { @extend .fa-heart-o; }
-
-.favorite:hover .fa-unfavorite { @extend .fa-heart; }
-.favorite:hover .fa-favorite   { @extend .fa-heart-o; }
-
-
-.public {
-  .fa-public, .fa-private {
-    -webkit-transition: all 0.2s ease-in-out 0s;
-    transition: all 0.2s ease-in-out 0s;
-  }
-
-  &:hover {
-    .fa-public, .fa-private {
-      -webkit-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-      transform: scale(1.2);
-    }
-  }
-}
-
-.fa-public { @extend .fa-unlock-alt; }
-.fa-private { @extend .fa-lock; }
-
-.public:hover .fa-public { @extend .fa-lock; }
-.public:hover .fa-private { @extend .fa-unlock-alt; }
-
-
 // Collection
 
 .tasks .item a:hover, .done {
   text-decoration: line-through;
 }
 
-.task-lists.collection { 
-  font-size: 1.45em; 
-  & > .item {
-    line-height: 2.2;
-
-    .delete {
-      line-height: 1.4;
-    }  
-  }
-}
 
 ul.collection {
   padding-left:0;
@@ -167,19 +115,6 @@ ul.collection {
   }
   &:hover, &:focus {
     text-decoration: none;
-  }
-}
-
-#task-lists-header {
-  position: relative;
-  .action-link {
-    position: absolute;
-    right: 0;
-    bottom: 10px;
-    font-size: 1.3em;
-    i {
-      color: $brand-primary;
-    }
   }
 }
 

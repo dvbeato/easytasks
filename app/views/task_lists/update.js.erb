@@ -1,1 +1,1 @@
-$('data-task-list="<%= @task-list.id %>"').replaceWith('<%=j render partial: 'task_list', locals: {task_list: @task_list} %>')
+$('[data-task-list="<%= @task_list.id %>"]').replaceWith('<%=j render partial: 'task_list', locals: {task_list: @task_list} %>')

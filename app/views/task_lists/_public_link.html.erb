@@ -1,13 +1,15 @@
+
 <% if task_list.public %>
               
-  <%= link_to task_list_path(task_list, task_list: {public: false}), method: :put, class: "public" do %>
+  <%= link_to task_list_path(task_list, task_list: {public: false}),remote: true, method: :put, class: "public" do %>
     <%= fa_icon "public" %>
   <% end %>
     
 <% else %>
     
-  <%= link_to task_list_path(task_list, task_list: {public: true}), method: :put, class: "public" do %>
+  <%= link_to task_list_path(task_list, task_list: {public: true}), remote: true, method: :put, class: "private" do %>
     <%= fa_icon "private" %>
   <% end %>
 
 <% end %>
+
