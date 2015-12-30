@@ -1,0 +1,11 @@
+<%= simple_form_for task_list, html: {class: "form-inline"}, remote: true do |f| %>    
+    <div class="input-group">
+      <%= f.input :name, label: false, placeholder: "Task List Name" %>
+      
+      <div class="input-group-btn">
+        <%= f.button :button, class: "btn-primary " do %>
+          <%= fa_icon "check" %>
+        <% end %>
+      </div>  
+    </div>
+<% end %>

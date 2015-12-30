@@ -3,7 +3,7 @@
   <h1 class="inline"><%= title %></h1>   
 
   <% if current_user? @user %>
-    <%= render "/task_lists/form", task_list: TaskList.new %>
+    <%= render "/task_lists/form_modal", task_list: TaskList.new %>
   <% end %>
 </section>
 
