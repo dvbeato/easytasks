@@ -18,6 +18,8 @@ a:focus {
   color: #fff;
 }
 
+.gradient .info-badge a { color: #fff; }
+
 .authentication .brand {
   padding-bottom: 30px;
   text-align: center;
@@ -175,8 +177,6 @@ ul.collection {
     }
   }
 }
-
-.gradient a { color: #fff; }
 
 .info-badge {
   @extend .inline;
