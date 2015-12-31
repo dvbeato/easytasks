@@ -38,7 +38,7 @@ RSpec.describe TaskListsController, type: :controller do
       
       it "deletes the task list" do
         expect {
-          delete :destroy, id: @task_list
+          xhr :delete, :destroy, id: @task_list
         }.to change(TaskList, :count).by(-1)
       end
 

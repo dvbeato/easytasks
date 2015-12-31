@@ -18,7 +18,7 @@ class TaskListsController < ApplicationController
 
   def destroy
     @task_list.destroy
-    redirect_to profile_path current_user
+    @totalTaskLists = task_list_scope.reload.size
   end
 
   def favorite

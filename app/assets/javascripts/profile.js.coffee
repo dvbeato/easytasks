@@ -1,10 +1,16 @@
 do (window) ->
 	
-	setTotalFavoriteTaskList = (total) ->
-		$('.total-favorite-task-list').text(total)
+	setTotalFavoriteTaskLists = (total) ->
+		$('.total-favorite-task-lists').text(total)
+
+	setTotalTaskLists = (total) ->
+		$('.total-task-lists').text(total)
 
 	window.profile = {
 		favoriteTaskLists: {
-			setTotal: setTotalFavoriteTaskList
+			setTotal: setTotalFavoriteTaskLists
+		},
+		taskLists: {
+			setTotal: setTotalTaskLists
 		}
 	}

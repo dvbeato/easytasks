@@ -7,7 +7,10 @@
   
   <h4 class="info-badge"> 
     <a href="#taskListsTab" data-toggle="tab">
-    <%= fa_icon "th-list" %> task lists: <%= @task_lists.size %> 
+    <%= fa_icon "th-list" %> task lists: 
+    <span class="total-task-lists">
+      <%= @task_lists.size %> 
+    </span>
     </a>
   </h4>
   
@@ -15,7 +18,7 @@
     <h4 class="info-badge"> 
       <a href="#favoritesTab" data-toggle="tab">
       <%= fa_icon "heart" %> favorites: 
-      <span class="total-favorite-task-list">				
+      <span class="total-favorite-task-lists">				
       	<%= @user.favorite_task_lists.size %> 
       </span>
       </a>
