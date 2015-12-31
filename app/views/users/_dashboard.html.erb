@@ -15,7 +15,9 @@
     <h4 class="info-badge"> 
       <a href="#favoritesTab" data-toggle="tab">
       <%= fa_icon "heart" %> favorites: 
-      <%= @user.favorite_task_lists.size %> 
+      <span class="total-favorite-task-list">				
+      	<%= @user.favorite_task_lists.size %> 
+      </span>
       </a>
     </h4>
   <% end %>

@@ -48,7 +48,7 @@ RSpec.describe TaskListsController, type: :controller do
 
       it "add current user as favorite" do
         expect {
-          post :favorite, id: task_list
+          xhr :post, :favorite, id: task_list
         }.to change(task_list.favorited_by, :count).by(1)
 
         expect(task_list.favorited_by).to include(current_user)
@@ -62,7 +62,7 @@ RSpec.describe TaskListsController, type: :controller do
         task_list = create(:task_list_favorited_by, user: current_user)
         
         expect {
-          delete :unfavorite, id: task_list
+          xhr :delete, :unfavorite, id: task_list
         }.to change(task_list.favorited_by, :count).by(-1)
 
         expect(task_list.favorited_by).to_not include(current_user)

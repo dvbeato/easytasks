@@ -1,6 +1,6 @@
 <%= render '/users/dashboard' %>
 
-<section id="user-task-lists" class="container">
+<section id="user-task-lists" class="container <%= 'user-profile' if current_user? @user %> ">
       
     <div class="tab-content">
     

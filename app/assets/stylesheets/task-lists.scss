@@ -11,7 +11,7 @@
   }
 }
 
-.favorite {
+.favorite, .unfavorite {
   color: $favorite-color;
   
   &:hover, &:focus  {
@@ -27,7 +27,7 @@
 
 .task-lists.collection { 
   font-size: 1.45em; 
-  & > .item {
+   .task-list-info {
     line-height: 2.2;
 
     .delete {
@@ -39,7 +39,7 @@
 .fa-favorite { @extend .fa-heart; }
 .fa-unfavorite { @extend .fa-heart-o; }
 
-.favorite:hover .fa-unfavorite { @extend .fa-heart; }
+.unfavorite:hover .fa-unfavorite { @extend .fa-heart; }
 .favorite:hover .fa-favorite   { @extend .fa-heart-o; }
 
 

@@ -23,12 +23,12 @@ class TaskListsController < ApplicationController
 
   def favorite
     current_user.favorites @task_list
-    redirect_to profile_path @task_list.user
+    render :update
   end
 
   def unfavorite
     current_user.unfavorites @task_list
-    redirect_to profile_path @task_list.user
+    @totalFavoriteTaskLists = current_user.favorite_task_lists.reload.size
   end
 
   private

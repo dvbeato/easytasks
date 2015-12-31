@@ -11,17 +11,20 @@
   <div class="panel panel-default collection task-lists">
   
   <% task_lists.each do |task_list| %>
-    
-    <div class="panel-heading item">
-      <%= render "/task_lists/task_list", task_list: task_list %>
-    </div>
 
-    <div id="task-list-<%= task_list.id %>-content" class="panel-collapse collapse">
-      <div class="panel-body">
-        <%= render "/tasks/index", task_list: task_list %>
+    <div data-task-list="<%= task_list.id %>">
+
+      <div class="panel-heading task-list-info item">
+        <%= render "/task_lists/task_list", task_list: task_list %>
       </div>
-    </div>
 
+      <div id="task-list-<%= task_list.id %>-content" class="panel-collapse collapse">
+        <div class="panel-body">
+          <%= render "/tasks/index", task_list: task_list %>
+        </div>
+      </div>
+
+    </div>
   <% end %>
   </div>
 </section>

@@ -9,12 +9,12 @@ RSpec.feature 'Favorite Task List' do
   context "given another user with a public task list" do
     given!(:another_user) { create(:user_with_public_task_list) }
 
-    scenario "allows user favorite his task list" do
+    scenario "allows user favorite his task list", js: true do
       visit profile_path another_user
 
-      find('.favorite').click
+      find('.unfavorite').click
       
-      expect(page).to have_selector('.fa-favorite')
+      expect(page).to have_selector('.favorite')
     end
   end
 
@@ -26,12 +26,12 @@ RSpec.feature 'Favorite Task List' do
       another_user
     end    
     
-    scenario "allows user to unfavorite his task list" do
+    scenario "allows user to unfavorite his task list", js: true do
       visit profile_path another_user
 
       find('.favorite').click
       
-      expect(page).to have_selector('.fa-unfavorite')
+      expect(page).to have_selector('.unfavorite')
     end
   end
 end

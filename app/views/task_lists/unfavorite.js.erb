@@ -1,0 +1,7 @@
+
+if ($('.user-profile').length) {
+  taskLists.remove(<%= @task_list.id %>);
+  profile.favoriteTaskLists.setTotal(<%= @totalFavoriteTaskLists %>);
+} else {
+  taskLists.update(<%= @task_list.id %>).to('<%=j render partial: 'task_list', locals: {task_list: @task_list} %>');
+}

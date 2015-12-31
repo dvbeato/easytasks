@@ -4,6 +4,6 @@ module UsersHelper
   end
 
   def current_user?(user)
-    user.id == current_user.id
+    user and user.id == current_user.id
   end
 end
