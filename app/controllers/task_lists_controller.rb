@@ -1,6 +1,7 @@
 class TaskListsController < ApplicationController
   before_action :set_task_list, only: [:show, :update, :destroy, :favorite, :unfavorite]
   before_action :authenticate_user!
+  before_action :validate_hack, only: [:update, :destroy]
 
   def create
     @task_list = task_list_scope.build(task_list_params)
@@ -35,6 +36,10 @@ class TaskListsController < ApplicationController
 
   def task_list_scope
     current_user.task_lists
+  end
+
+  def validate_hack
+    raise "This task list not belongs to you!" if @task_list.user != current_user
   end
 
   def set_task_list

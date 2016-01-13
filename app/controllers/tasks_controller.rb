@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
-  before_action :set_task_list, only: [:create]
+  before_action :set_task_list, only: [:create, :update, :destroy]
+  
   before_action :set_task, only: [:update, :destroy, :done, :undone]
+  
+  before_action :validate_hack, only: [:create, :update, :destroy]
 
   before_action :authenticate_user!
 
@@ -28,6 +31,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def validate_hack
+    raise "This task list not belongs to you!" if @task_list.user != current_user
+  end
 
   def set_task
     @task = Task.find(params[:id])
